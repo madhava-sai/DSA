@@ -7,6 +7,7 @@ def string_palindrome(s):
     right = len(s) - 1
     while left < right:
         if s[left] == s[right]:
+            # Moving the pointers towards each other since the characters matched.
             left += 1
             right -= 1
         else:

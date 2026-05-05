@@ -12,10 +12,11 @@ def max_water(arr):
     while left < right:
         width =  right - left
         height = min(arr[left], arr[right])
-        area = width * height
+        area = width * height # Calculating area with current pointers position.
         max_area = max(area, max_area)
 
         if arr[left] < arr[right]:
+            #  Moving the shorter pointer. Sacrifice the shorter wall because it limits the height.
             left += 1
         else:
             right -= 1
