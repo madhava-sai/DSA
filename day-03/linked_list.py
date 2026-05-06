@@ -31,7 +31,7 @@ class LinkedList:
         print(" -> ".join(elements) + " -> None")
 
     def reverse(self):
-        """Reverses the list: O(n)"""
+        """Reverses the list: O(n) time"""
         prev = None
         curr = self.head
         while curr:
@@ -41,12 +41,39 @@ class LinkedList:
             curr = next_node
         self.head = prev
 
-#Quick Test
-ll = LinkedList()
-ll.append(1)
-ll.append(2)
-ll.append(3)
-ll.append(4)
-ll.print_list()
-ll.reverse()
-ll.print_list()
+    def has_cycle(self):
+        """Detectes if the list has a cycle: O(n) time"""
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if fast == slow:
+                return True
+        return False
+
+# Test
+# ll = LinkedList()
+# ll.append(1)
+# ll.append(2)
+# ll.append(3)
+# ll.append(4)
+# ll.print_list()
+
+# To test reverse method
+# ll.reverse()
+# ll.print_list()
+
+# To test has_cycle method
+# ll = LinkedList()
+# ll.append(1)
+# ll.append(2)
+# ll.append(3)
+# ll.append(4)
+
+# # Manually creating a cycle: 4 -> 2
+# node4 = ll.head.next.next.next
+# node2 = ll.head.next
+# node4.next = node2 
+
+# print(ll.has_cycle()) # Should return True
